@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Ninja Scholar - One Stop Solution to all Engineering Material{% endblock %}
+{% block content %}
+<h1 class="display-4 text-center my-3"> <b> A Website designed <span style="color: blue;">for the students of</span> </b></h1>
+    <h1 class="display-5 text-center my-2">AIDS AIML & IIOT</h1>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row my-4" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);border-radius: 20px;">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h1>Select Your Branch and Semester</h1>
+            </div>
+            <div class="col-md-12">
+                <form method="post" action="{{ url_for('select_subjects') }}">
+                    <label for="branch">Branch:</label>
+                    <select class="form-select" aria-label="Default select example" name="branch">
+                        <option selected>Select Your Branch</option>
+                        <option value="AIDS">AIDS</option>
+                        <option value="AIML">AIML</option>
+                        <option value="IOT">IOT</option>
+                    </select>
+                    <label for="semester">Semester:</label>
+                    <select class="form-select" aria-label="Default select example" name="semester">
+                        <option selected>Select Your Semester</option>
+                        <option value="1">First</option>
+                        <option value="2">Second</option>
+                        <option value="3">Third</option>
+                        <option value="4">Fourth</option>
+                        <option value="5">Fifth</option>
+                    </select>
+                    <button class="btn btn-info my-3" type="submit">Select Subjects</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

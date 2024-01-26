@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Page Title{% endblock %}
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="row" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);border-radius: 20px;">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h1>Subject Listing</h1>
+                
+                
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+                <h4>Semester: {{ semester }}</h4> 
+            </div>
+            
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="row d-flex justify-content-center">
+                    {% for subject in subjects %}
+                        <div class="col-md-2 mx-4 my-3"> 
+                            <a href="{{ url_for('subject_details', subject_id=subject._id) }}"><button class="btn btn-light subject-button" style="width: 8rem;" type="button">
+                                {{ subject.subject_name }}
+                            </button></a>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

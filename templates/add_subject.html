@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Add Subject</title>
+    <script>
+        function addDriveLinkField() {
+            var container = document.getElementById("drive-links-container");
+            
+            // Create a div to hold both the name and link inputs
+            var driveLinkDiv = document.createElement("div");
+
+            // Create input for the name
+            var nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameInput.name = "drive_link_names";
+            nameInput.placeholder = "Drive Link Name";
+            
+            // Create input for the link
+            var linkInput = document.createElement("input");
+            linkInput.type = "text";
+            linkInput.name = "drive_links";
+            linkInput.placeholder = "Google Drive Link";
+
+            // Append both inputs to the div
+            driveLinkDiv.appendChild(nameInput);
+            driveLinkDiv.appendChild(linkInput);
+
+            // Append the div to the container
+            container.appendChild(driveLinkDiv);
+        }
+    </script>
+</head>
+<body>
+    <h1>Add New Subject</h1>
+    <form action="{{ url_for('add_document') }}" method="post">
+        <label for="subject_name">Subject Name:</label>
+        <input type="text" name="subject_name" required><br>
+
+        <label for="branch_name">Branch Name:</label>
+        <input type="text" name="branch_name" required><br>
+
+        <label for="semester">Semester:</label>
+        <input type="text" name="semester" required><br>
+
+        <label>Google Drive Links:</label>
+        <div id="drive-links-container">
+            <!-- Initially one div containing name and link inputs -->
+            <div>
+                <input type="text" name="drive_link_names" placeholder="Drive Link Name">
+                <input type="text" name="drive_links" placeholder="Google Drive Link" required>
+            </div>
+        </div>
+        <button type="button" onclick="addDriveLinkField()">Add Another Drive Link</button>
+
+        <label for="semester">Unit-1:</label>
+        <input type="text" name="unit_1" required><br>
+        
+        <label for="semester">Unit-2:</label>
+        <input type="text" name="unit_2" required><br>
+
+        <label for="semester">Unit-3:</label>
+        <input type="text" name="unit_3" required><br>
+
+        <label for="semester">Unit-4:</label>
+        <input type="text" name="unit_4" required><br>
+
+        <label for="semester">PYQ's</label>
+        <input type="text" name="pyq" required><br>
+
+        <input type="submit" value="Add Subject">
+    </form>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

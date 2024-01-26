@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Page Title{% endblock %}
+{% block content %}
+    <div class="container my-5" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);border-radius: 20px;">
+        <h1 class="text-center">Subject Details</h1>
+        <hr>
+        {% if subject %}
+        <p>{{ subject.subject_name }}</p>
+        <h6 class="display-6 text-center">Syllabus</h6>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Unit - 1
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ subject.unit_1 }}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Unit - 2
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ subject.unit_2 }}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Unit - 3 
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ subject.unit_3 }}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Unit - 4 
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ subject.unit_4 }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        {% if subject.drive_links %}
+        <h6 class="display-6 text-center">Notes</h6>
+        <div class="row justify-content-center my-3">
+            {% for link in subject.drive_links %}
+                <div class="col-md-3 my-2">
+                    <a href="{{ link.link }}" target="_blank" rel="noopener noreferrer">
+                        <button type="button" class="btn btn-info btn-block">{{ link.name }}</button>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+        <hr>
+            <h6 class="display-6 text-center">PYQ's</h6>
+            <div class="row justify-content-center my-3">
+                <a href={{ subject.pyq }} target="_blank" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-info btn-block">Previous Year Questions</button>
+                </a>
+            </div>
+      
+        
+        
+        {% else %}
+        <p class="text-center">Subject not found.</p>
+        {% endif %}
+
+        <br>
+
+        <a href="/" class="btn btn-secondary btn-sm">Back to Subject Listing</a>
+    </div>
+
+{% endblock %}
